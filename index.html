@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GazeIQ</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: #0b1120;
+            color: #eef2ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 620px;
+            padding: 35px;
+            background: #151f33;
+            border: 1px solid #2b3954;
+            border-radius: 18px;
+        }
+
+        .brand {
+            color: #6ee7b7;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        h1 { font-size: 32px; margin-bottom: 10px; }
+
+        p {
+            color: #a9b7cc;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            background: #0b1426;
+            border: 1px solid #394964;
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: 2px solid #10b981;
+            border-color: #10b981;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #10b981;
+            color: #062b22;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover { background: #34d399; }
+
+        .notice {
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 8px;
+            background: #202e44;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="brand">GazeIQ</div>
+
+        <h1>Welcome to your interview</h1>
+
+        <p>
+            AI-assisted interview monitoring with webcam-based
+            face and approximate gaze tracking.
+        </p>
+
+        <form action="/interview" method="POST">
+
+            <!-- Candidate Name: letters and spaces only -->
+            <label for="name">Candidate Name</label>
+            <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Enter your full name"
+                pattern="[A-Za-z ]+"
+                title="Please enter letters and spaces only."
+                oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')"
+                required
+            >
+
+            <!-- Candidate ID: digits only -->
+            <label for="candidateId">Candidate ID</label>
+            <input
+                id="candidateId"
+                name="candidateId"
+                type="text"
+                placeholder="Enter your candidate ID"
+                inputmode="numeric"
+                pattern="[0-9]+"
+                title="Candidate ID must contain numbers only."
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                required
+            >
+
+            <!-- Interview Role: letters and spaces only -->
+            <label for="role">Interview Role</label>
+            <input
+                id="role"
+                name="role"
+                type="text"
+                placeholder="e.g. Python Developer"
+                pattern="[A-Za-z ]+"
+                title="Please enter letters and spaces only."
+                oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')"
+                required
+            >
+
+            <button type="submit">Continue to Interview</button>
+        </form>
+
+        <div class="notice">
+            <strong>Privacy notice:</strong>
+            Your webcam will start only after you choose to enable it
+            and grant browser permission. Gaze estimates can be
+            inaccurate and are not proof of misconduct.
+        </div>
+    </main>
+</body>
+</html>
